@@ -60,19 +60,9 @@ public class ModelTrainingUtils {
 		byte[] preBytesArray = new byte[numPreBytes];
 		byte[] initialBytesArray = new byte[numInitialBytes];
 		List<Feature> trainingVector = new ArrayList<>();
-		try {
-			Address preStart = address.add(-numPreBytes);
-			block.getBytes(preStart, preBytesArray);
-			block.getBytes(address, initialBytesArray);
-		}
-		catch (MemoryAccessException | AddressOutOfBoundsException e) {
-			//most likely an exception means that you are trying to read beyond a block
-			//boundary.  This will happen occasionally when the sliding window is near the
-			//begining or end of a block.  
-			Msg.warn(RandomForestTrainingTask.class,
-				"MemoryAccessException at " + address.toString());
-			return trainingVector;
-		}
+		Address preStart = address.add(-numPreBytes);
+		block.getBytes(preStart, preBytesArray);
+		block.getBytes(address, initialBytesArray);
 
 		for (int i = 0; i < numPreBytes; i++) {
 			int currentByte = Byte.toUnsignedInt(preBytesArray[i]);

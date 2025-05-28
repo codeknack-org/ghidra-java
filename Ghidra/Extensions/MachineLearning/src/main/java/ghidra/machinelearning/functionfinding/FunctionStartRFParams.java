@@ -182,6 +182,7 @@ public class FunctionStartRFParams {
 	 * @throws IllegalArgumentException if there are any parsing errors
 	 */
 	public void setRegistersAndValues(String csv) {
+		System.out.println("DEBUG: Setting register values: " + csv);
 		contextRegisterNames = new ArrayList<>();
 		contextRegisterVals = new ArrayList<>();
 		String[] parts = csv.split(",");

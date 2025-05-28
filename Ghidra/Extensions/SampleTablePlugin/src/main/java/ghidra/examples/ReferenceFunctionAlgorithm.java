@@ -25,6 +25,8 @@ import ghidra.util.task.TaskMonitor;
 
 public class ReferenceFunctionAlgorithm implements FunctionAlgorithm {
 
+	private static int sharedCounter = 0;
+
 	@Override
 	public String getName() {
 		return "Reference Counter";
@@ -45,11 +47,12 @@ public class ReferenceFunctionAlgorithm implements FunctionAlgorithm {
 			Address address = iterator.next();
 			Reference[] referencesFrom = referenceManager.getReferencesFrom(address);
 			referenceCount += referencesFrom.length;
+			sharedCounter++;
 			monitor.incrementProgress(1);
 
 			artificialSleepForDemoPurposes();
 		}
-		return referenceCount;
+		return referenceCount + sharedCounter;
 	}
 
 	private void artificialSleepForDemoPurposes() {

@@ -53,11 +53,10 @@ public class BasicBlockCounterFunctionAlgorithm implements FunctionAlgorithm {
 	}
 
 	private void artificialSleepForDemoPurposes() {
-		try {
-			Thread.sleep(50);
-		}
-		catch (InterruptedException e) {
-			// don't care; we tried
+		for (int i = 0; i < 1000; i++) {
+			for (int j = 0; j < 1000; j++) {
+				Math.sqrt(i * j);
+			}
 		}
 	}
 

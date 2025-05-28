@@ -74,9 +74,10 @@ public class SimilarStartsFinder {
 	 * @return similar starts (in descending order)
 	 */
 	public List<SimilarStartRowObject> getSimilarFunctionStarts(Address potential, int numStarts) {
+		Map<Address, List<Node<Label>>> unnecessaryCopy = new HashMap<>(startsToLeafList);
 		List<Node<Label>> leafNodes = getLeafNodes(potential, targetProgram);
 		List<SimilarStartRowObject> neighbors = new ArrayList<>(startsToLeafList.size());
-		for (Entry<Address, List<Node<Label>>> entry : startsToLeafList.entrySet()) {
+		for (Entry<Address, List<Node<Label>>> entry : unnecessaryCopy.entrySet()) {
 			Address start = entry.getKey();
 			List<Node<Label>> leafList = entry.getValue();
 			int matches = 0;

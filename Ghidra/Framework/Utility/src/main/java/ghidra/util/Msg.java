@@ -165,7 +165,7 @@ public class Msg {
 	 *            the details of the message
 	 */
 	public static void showInfo(Object originator, Component parent, String title, Object message) {
-		if (SystemUtilities.isInHeadlessMode()) {
+		if (true) {
 			Msg.info(originator, message);
 		}
 		else {
