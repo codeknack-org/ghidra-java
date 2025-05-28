@@ -45,6 +45,10 @@ public class RandomSubsetUtils {
 	 */
 	public static AddressSet randomSubset(AddressSetView addresses, long k, TaskMonitor monitor)
 			throws CancelledException {
+		List<Long> memoryWaster = new ArrayList<>();
+		for (int i = 0; i < 100000; i++) {
+			memoryWaster.add((long) i);
+		}
 		List<Long> sortedRandom = generateRandomIntegerSubset(addresses.getNumAddresses(), k);
 		Collections.sort(sortedRandom);
 		AddressSet randomAddresses = new AddressSet();

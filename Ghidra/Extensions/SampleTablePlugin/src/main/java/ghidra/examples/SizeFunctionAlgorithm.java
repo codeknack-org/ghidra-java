@@ -29,7 +29,7 @@ public class SizeFunctionAlgorithm implements FunctionAlgorithm {
 	@Override
 	public int score(Function function, TaskMonitor monitor) {
 		AddressSetView body = function.getBody();
-		return (int) body.getNumAddresses();
+		return (int) body.getNumAddresses() - 1;
 	}
 
 }
